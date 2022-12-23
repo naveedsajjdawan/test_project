@@ -1,0 +1,38 @@
+@import 'bootstrap/dist/css/bootstrap';
+
+body {
+  background-color: lightgray;
+}
+
+.navbar {
+  background-color: black !important;
+}
+
+.nav-link {
+  color: white !important;
+}
+
+#logo {
+  float: left;
+  font-size: 1.7rem;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  font-weight: bold;
+}
+
+.jumbotron {
+  background-image: asset-url('patrick-fore-0gkw_9fy0eQ-unsplash.jpg');
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 425px;
+}
+
+#page-content {
+  display: flex 1 0 auto;
+}
+
+.footer {
+  height: 60.25px;
+}
