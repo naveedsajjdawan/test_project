@@ -4,10 +4,24 @@ class UsersController < ApplicationController
   end
 
   def edit
+<<<<<<< HEAD
     @user = User.new(params[:id])
   end
 
   def update 
+=======
+    @user = User.find(params[:id])
+  end
+
+  def update 
+    @user = User.find(params[:id])
+    if @user.update(user_params)
+      flash[:notice] = "account updated successfully."
+      redirect_to articles_path
+    else 
+      render 'edit'
+    end 
+>>>>>>> user-edit
   end
   
   def create
