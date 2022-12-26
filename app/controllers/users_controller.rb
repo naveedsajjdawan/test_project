@@ -1,27 +1,26 @@
 class UsersController < ApplicationController
+
+def show
+  @user = User.find(params[:id])
+  @articles = @user.articles 
+end
+
   def new 
     @user = User.new
   end
 
   def edit
-<<<<<<< HEAD
     @user = User.new(params[:id])
-  end
-
-  def update 
-=======
-    @user = User.find(params[:id])
   end
 
   def update 
     @user = User.find(params[:id])
     if @user.update(user_params)
-      flash[:notice] = "account updated successfully."
+      flash[:notice]= "your account update successfully"
       redirect_to articles_path
     else 
       render 'edit'
-    end 
->>>>>>> user-edit
+    end
   end
   
   def create
