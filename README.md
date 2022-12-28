@@ -23,35 +23,65 @@ Things you may want to cover:
 
 * ...
 
+<% if logged_in? %>
+            <li class="nav-item dropdown">
+              <li class="nav-item">
+                <%= link_to 'Logout', logout_path, class: "nav-link", method: :delete %>
+              </li>
+            <% else %>
+              <li class="nav-item">
+                <%= link_to 'Log in', login_path, class: "nav-link" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to 'Sign up', signup_path, class: "nav-link" %>
+              </li>
+            <% end %>
 
-<div class="container">
-    <div class="row justify-content-center">        
-          <div class="col-10">
-              <%= render 'shared/errors'%>
-              <%= form_with(model: @article, class: "shadow p-3 mb-3 bg-info rounded", local: true) do |f| %>
-                  <div class="form-group row mb-3">
-                    <%= f.label :title, class: "col-2 col-form-label text-light" %>
-                      <div class="col-10">
-                        <%= f.text_field :title, class: "form-control shadow rounded", placeholder: "Title of article" %>
-                      </div>
-                  </div>
 
-                    <div class="form-group row">
-                      <%= f.label :description, class: "col-2 col-form-label text-light" %>
-                        <div class="col-10"> 
-                        <%= f.text_area :description, rows: 10, class: "form-control shadow rounded", placeholder: "Description of article" %>
-                        </div>
-                    </div>
-                
-                    <div class="form-group row justify-content-center mt-3">
-                      <%= f.submit class: "btn btn-outline-light btn-lg" %>
-                    </div>
-                <% end %>
-          </div>
-          <div class="bt-3">
-            <%= link_to '[ Cancel and return to articles listing ]', articles_path, class: "text-info justify-content-center" %>
-          </div>
+
+
+
+
+
+
+<% if logged_in? && @user == current_user%>
+    <div class="text-center mt-4">
+        <%= link_to "Edit your profile", edit_user_path(@user), class: "btn btn-outline-info" %>
     </div>
-</div>
+<% end %>
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+<% if logged_in? %>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                profile [<%= current_user.username %>]
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><%= link_to "View Profile", user_path(current_user), class:"dropdown-item"%></li>
+                <li><%= link_to "Edit Profile", edit_user_path(current_user), class:"dropdown-item"%></li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <%= link_to 'Logout', logout_path, class: "nav-link", method: :delete %>
+              </li>
+            <% else %>
+              <li class="nav-item">
+                <%= link_to 'Log in', login_path, class: "nav-link" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to 'Sign up', signup_path, class: "nav-link" %>
+              </li>
+            <%end%>
